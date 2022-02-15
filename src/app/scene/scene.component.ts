@@ -36,7 +36,7 @@ export class SceneComponent implements OnInit {
   private setAttemptsByDifficulty() {
     switch (this.sceneDifficulty) {
       case 0:
-        this.sceneAttempts = 13;
+        this.sceneAttempts = 14;
         break;
       case 1:
         this.sceneAttempts = 12;
