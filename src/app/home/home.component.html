@@ -5,10 +5,14 @@
 </ng-template>
 
 <ng-template #templateSplashGame>
-    <div>
-        <h1>Juego del AHORCADO</h1>
-        <button (click)="homeSetDifficulty(0)">Fácil</button>
-        <button (click)="homeSetDifficulty(1)">Medio</button>
-        <button (click)="homeSetDifficulty(2)">Difícil</button>
+    <div class="menu_principal">
+        <h2 class="fs-1">juego del</h2>
+        <h1 class="fs-3">*ahorcado*</h1>
+        <img src="../../assets/sprites/ahorcado.svg" alt="">
+        <div class="menu_botones">
+            <button class="fs-2" (click)="homeSetDifficulty(0)">FACIL</button>
+            <button class="fs-2" (click)="homeSetDifficulty(1)">MEDIO</button>
+            <button class="fs-2" (click)="homeSetDifficulty(2)">DIFICIL</button>
+        </div>
     </div>
 </ng-template>

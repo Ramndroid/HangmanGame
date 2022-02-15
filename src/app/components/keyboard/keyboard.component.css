@@ -7,11 +7,7 @@
 button {
     padding: 10px;
     margin: 5px;
-    font-size: 2rem;
-    width: 50px;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    color: whitesmoke;
+    width: 70px;
     background-color: #223329;
     border: none;
     border-radius: 8px;
