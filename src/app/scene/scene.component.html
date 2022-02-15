@@ -1,0 +1,25 @@
+<div>
+    <app-draw [drawAttemptsLeft]="sceneAttempts"></app-draw>
+    <app-word [wordTextToShow]="sceneWordDisplayedNowArray" [wordSecretWord]="sceneSecretWordArray"
+        [wordShowSecretWord]="sceneShowSecretWord"></app-word>
+</div>
+
+<div [ngSwitch]="sceneCurrentState">
+
+    <!-- PARTIDA EN CURSO -->
+    <ng-template [ngSwitchCase]="0"> 
+        <app-keyboard [keyboardDifficulty]="sceneDifficulty" (keyboardPressedLetter)="scenePressKey($event)"></app-keyboard>
+    </ng-template>
+
+    <!-- JUEGO GANADO -->
+    <ng-template [ngSwitchCase]="1">
+        <h1>¡Has ganado!</h1>
+    </ng-template>
+
+    <!-- GAME OVER -->
+    <ng-template [ngSwitchCase]="2">
+        <h1>Oh oh... fin del juego</h1>
+    </ng-template>
+</div>
+
+<button (click)="sceneTryAgain()">{{sceneTextButton}}</button>

@@ -1,0 +1,14 @@
+<ng-template [ngIf]="homeIsStartGame" [ngIfElse]="templateSplashGame">
+    <div>
+        <app-scene [sceneDifficulty]="homeDifficulty" (sceneStateGame)="homeStartNewGame()"></app-scene>
+    </div>
+</ng-template>
+
+<ng-template #templateSplashGame>
+    <div>
+        <h1>Juego del AHORCADO</h1>
+        <button (click)="homeSetDifficulty(0)">Fácil</button>
+        <button (click)="homeSetDifficulty(1)">Normal</button>
+        <button (click)="homeSetDifficulty(2)">Difícil</button>
+    </div>
+</ng-template>
