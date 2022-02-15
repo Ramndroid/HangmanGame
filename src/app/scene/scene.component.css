@@ -4,3 +4,8 @@ button {
     padding: 5px;
     margin-top: 50px;
 }
+
+h1 {
+    color: whitesmoke;
+    font-size: 3rem;
+}

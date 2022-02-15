@@ -11,106 +11,107 @@ export class SceneComponent implements OnInit {
   @Input() sceneDifficulty: number = 0;
   @Output() sceneStateGame = new EventEmitter<boolean>();
 
-  sceneCurrentState: number = 0;
-  
-  sceneAttempts: number = 14;
+  sceneCurrentState: number = 0; 
 
-  sceneWordDisplayedNow: string = "";
+  sceneAttempts: number = 14; 
 
-  sceneWordDisplayedNowArray: string[] = [];
+  sceneWordDisplayedNowArray: string[] = []; 
 
-  sceneSuccessfulLetters: string[] = [];
+  sceneSecretWordArray: string[] = []; 
 
-  sceneSecretWord: string = "";
-
-  sceneSecretWordArray: string[] = [];
-
-  sceneShowSecretWord: boolean = false;
+  sceneShowSecretWord: boolean = false; 
 
   sceneTextButton: string = "Abandonar partida"; 
+
+  private sceneSuccessfulLetters: string[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
-    // Establecer intentos según dificultad
-    /*switch (this.sceneDifficulty) {
-      case 0:
-        this.sceneAttempts = 14;
-        break;
-      case 1:
-        this.sceneAttempts = 14;
-        break;
-      case 2:
-        this.sceneAttempts = 14;
-        break;
-    }*/
-
-    // Obtener una palabra aleatoria según nivel de dificultad
-    let random = Math.floor(Math.random() * (words[this.sceneDifficulty].length));
-    this.sceneSecretWord = words[this.sceneDifficulty][random].toUpperCase();
-
-    // Primer pintado de la palabra (toda con '_')
-    for (let i = 0; i < this.sceneSecretWord.length; i++) {
-      this.sceneWordDisplayedNow += "_";
-      this.sceneSecretWordArray.push(this.sceneSecretWord[i]);
-      console.log(this.sceneSecretWordArray);
-    }
-
-    this.sceneWordDisplayedNowArray = [];
-      for (let i = 0; i < this.sceneWordDisplayedNow.length; i++){
-        this.sceneWordDisplayedNowArray.push("_");
-      }
-
+    this.setAttemptsByDifficulty();
+    this.getSecretWord();
+    this.displaySecretWord();
   }
 
-  scenePressKey(letra: string) {
-    // si la palabra incluye la letra
-    if (this.sceneSecretWord.includes(letra)) {
-
-      // se almacena la letra que sí está en la palabra
-      this.sceneSuccessfulLetters.push(letra);
-
-      // variable usada para repintar la palabra
-      let result: string = "";
-
-      // recorrer la palabra...
-      for (let i = 0; i < this.sceneSecretWord.length; i++) {
-        let letraPalabra = this.sceneSecretWord[i];
-        if (this.sceneSuccessfulLetters.includes(letraPalabra)) {
-          // si coincide la letra, se pinta la letra
-          result += letraPalabra;
-        } else {
-          // si no coincide la letra, se pinta '_'
-          result += "_";
-        }
-      }
-      this.sceneWordDisplayedNow = result;
-      this.sceneWordDisplayedNowArray = [];
-      for (let i = 0; i < this.sceneWordDisplayedNow.length; i++){
-        if (this.sceneWordDisplayedNow[i] != "_") {
-          this.sceneWordDisplayedNowArray.push(this.sceneWordDisplayedNow[i]);
-        } else {
-          this.sceneWordDisplayedNowArray.push("_");
-        }
-        
-      }
-    } else {
-      this.sceneAttempts--;
+  private setAttemptsByDifficulty() {
+    switch (this.sceneDifficulty) {
+      case 0:
+        this.sceneAttempts = 13;
+        break;
+      case 1:
+        this.sceneAttempts = 12;
+        break;
+      case 2:
+        this.sceneAttempts = 9;
+        break;
     }
+  }
 
-    // Comprobar si el jugador ha ganado
-    if (!this.sceneWordDisplayedNow.includes("_")) {
+  private getSecretWord() {
+    let random = Math.floor(Math.random() * (words[this.sceneDifficulty].length));
+    let sceneSecretWord = words[this.sceneDifficulty][random].toUpperCase();
+    this.getSecretWordInArray(sceneSecretWord);
+  }
+
+  private getSecretWordInArray(secretWord: string) {
+    for (let i = 0; i < secretWord.length; i++) {
+      this.sceneSecretWordArray.push(secretWord[i]);
+    }
+  }
+
+  private displaySecretWord() {
+    this.sceneWordDisplayedNowArray = [];
+    for (let i = 0; i < this.sceneSecretWordArray.length; i++) {
+      this.sceneWordDisplayedNowArray.push("_");
+    }
+  }
+
+  scenePressKey(letter: string) {
+    this.checkTheLetter(letter);
+    this.hasWon();
+    this.hasLost();
+  }
+
+  private checkTheLetter(letter: string) {
+    if (this.isLetterInSecretWord(letter))
+      this.secretWordHasLetter(letter);
+    else
+      this.sceneAttempts--;
+  }
+
+  private isLetterInSecretWord(letter: string): boolean {
+    return this.sceneSecretWordArray.includes(letter);
+  }
+
+  private secretWordHasLetter(letter: string) {
+
+    this.sceneSuccessfulLetters.push(letter);
+
+    let result: string = "";
+
+    this.sceneSecretWordArray.forEach(letter => {
+      if (this.sceneSuccessfulLetters.includes(letter))
+        result += letter;
+      else
+        result += "_";
+    });
+
+    this.sceneWordDisplayedNowArray = [...result];
+  }
+
+  private hasWon() {
+    if (!this.sceneWordDisplayedNowArray.includes("_")) {
       this.sceneTextButton = "Nueva partida";
       this.sceneCurrentState = 1;
     }
+  }
 
-    // Comprobar si el jugador ha perdido
+  private hasLost() {
     if (this.sceneAttempts == 0) {
       this.sceneTextButton = "Volver a intentar";
       this.sceneShowSecretWord = true;
       this.sceneCurrentState = 2;
     }
-
   }
 
   sceneTryAgain() {

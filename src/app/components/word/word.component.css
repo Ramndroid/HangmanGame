@@ -1,9 +1,11 @@
 button {
     padding: 20px;
-    color: steelblue;
+    color: whitesmoke;
     font-size: 3rem;
     margin: 80px 5px 80px 5px;
-    /* margin: 80px; */
     width: 80px;
     height: auto;
+    background-color: #4c705b;
+    border: none;
+    border-radius: 8px;
 }

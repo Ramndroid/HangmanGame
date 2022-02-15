@@ -11,12 +11,8 @@ export class WordComponent implements OnInit {
   @Input() wordSecretWord: string[] = [""];
   @Input() wordShowSecretWord: boolean = false;
 
-  constructor() { 
-  }
+  constructor() { }
 
-  ngOnInit(): void {
-  }
-
-  
+  ngOnInit(): void { }
 
 }
