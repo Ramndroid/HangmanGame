@@ -25,7 +25,7 @@ export class SceneComponent implements OnInit {
 
   private sceneSuccessfulLetters: string[] = [];
 
-  private SEPARATOR: string = "_";
+  private SEPARATOR: string = " ";
 
   constructor() { }
 

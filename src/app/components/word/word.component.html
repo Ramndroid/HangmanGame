@@ -1,11 +1,11 @@
 <ng-template [ngIf]="wordShowSecretWord" [ngIfElse]="templateCurrentGame">
     <div>
-        <button class="fs-3" disabled *ngFor="let letter of wordSecretWord">{{ letter.toUpperCase() }}</button>
+        <p class="fs-3" *ngFor="let letter of wordSecretWord">{{ letter.toUpperCase() }}</p>
     </div>
 </ng-template>
 
 <ng-template #templateCurrentGame>
     <div>
-        <button class="fs-3" disabled *ngFor="let letter of wordTextToShow">{{ letter.toUpperCase() }}</button>
+        <p class="fs-3" *ngFor="let letter of wordTextToShow">{{ letter.toUpperCase() }}</p>
     </div>
 </ng-template>
