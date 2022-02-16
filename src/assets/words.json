@@ -1,18 +1,45 @@
 [
     [
-        "pipa", "pupa", "papa",
-        "cuco", "caco", "cuca",
+        "pipa",
+        "pupa",
+        "papa",
+        "cuco",
+        "caco",
+        "cuca",
         "hada",
-        "arce", "arca", "arco", "orco",
+        "arce",
+        "arca",
+        "arco",
+        "orco",
         "pino",
-        "polo", "pelo", "pela", "pila",
-        "bala", "pala", "sala", "tala", "tela", "tila",
-        "filo", "tilo", ""
+        "polo",
+        "pelo",
+        "pela",
+        "pila",
+        "bala",
+        "pala",
+        "sala",
+        "tala",
+        "tela",
+        "tila",
+        "filo",
+        "tilo"
     ],
     [
-        "frutal", "comida", "persa", "calma"
+        "frutal",
+        "comida",
+        "persa",
+        "calma"
     ],
     [
-        "zanahoria", "hospital", "cartera", "calendario", "sensato", "cansancio", "mirada", "festivo", "burbuja", ""
+        "zanahoria",
+        "hospital",
+        "cartera",
+        "calendario",
+        "sensato",
+        "cansancio",
+        "mirada",
+        "festivo",
+        "burbuja"
     ]
 ]
