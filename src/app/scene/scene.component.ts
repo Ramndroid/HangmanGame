@@ -25,6 +25,8 @@ export class SceneComponent implements OnInit {
 
   private sceneSuccessfulLetters: string[] = [];
 
+  private SEPARATOR: string = "_";
+
   constructor() { }
 
   ngOnInit(): void {
@@ -62,7 +64,7 @@ export class SceneComponent implements OnInit {
   private displaySecretWord() {
     this.sceneWordDisplayedNowArray = [];
     for (let i = 0; i < this.sceneSecretWordArray.length; i++) {
-      this.sceneWordDisplayedNowArray.push("_");
+      this.sceneWordDisplayedNowArray.push(this.SEPARATOR);
     }
   }
 
@@ -93,14 +95,14 @@ export class SceneComponent implements OnInit {
       if (this.sceneSuccessfulLetters.includes(letter))
         result += letter;
       else
-        result += "_";
+        result += this.SEPARATOR;
     });
 
     this.sceneWordDisplayedNowArray = [...result];
   }
 
   private hasWon() {
-    if (!this.sceneWordDisplayedNowArray.includes("_")) {
+    if (!this.sceneWordDisplayedNowArray.includes(this.SEPARATOR)) {
       this.sceneTextButton = "Nueva partida";
       this.sceneCurrentState = 1;
     }

@@ -1,4 +1,4 @@
-<div class="botones">
-    <button class="fs-2" *ngFor="let letter of keyboardAlphabet" name="{{ letter.toUpperCase() }}"
+<div class="keyboard">
+    <button class="key fs-2" *ngFor="let letter of keyboardAlphabet" name="{{ letter.toUpperCase() }}"
         (click)="keyboardPressKey(letter.toUpperCase(), $event)">{{ letter.toUpperCase() }}</button>
 </div>

@@ -1,10 +1,8 @@
-<div>
+<div class="flex-column pt" [ngSwitch]="sceneCurrentState">
+
     <app-draw [drawAttemptsLeft]="sceneAttempts"></app-draw>
     <app-word [wordTextToShow]="sceneWordDisplayedNowArray" [wordSecretWord]="sceneSecretWordArray"
         [wordShowSecretWord]="sceneShowSecretWord"></app-word>
-</div>
-
-<div [ngSwitch]="sceneCurrentState">
 
     <!-- PARTIDA EN CURSO -->
     <ng-template [ngSwitchCase]="0"> 
@@ -13,13 +11,13 @@
 
     <!-- JUEGO GANADO -->
     <ng-template [ngSwitchCase]="1">
-        <h1>¡Has ganado!</h1>
+        <h1 class="blue-text fs-3">¡Has ganado!</h1>
     </ng-template>
 
     <!-- GAME OVER -->
     <ng-template [ngSwitchCase]="2">
-        <h1>Oh oh... fin del juego</h1>
+        <h1 class="red-text fs-3">Oh oh... fin del juego</h1>
     </ng-template>
-</div>
 
-<button class="fs-2" (click)="sceneTryAgain()">{{sceneTextButton}}</button>
+    <button class="btn fs-2 mt" (click)="sceneTryAgain()">{{sceneTextButton}}</button>
+</div>

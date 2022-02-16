@@ -1,14 +1,29 @@
-.botones {
-    width: 600px;
-    margin: 0 auto;
-    text-align: center;
+.keyboard {
+    width    : 80%;
+    max-width: 600px;
+    margin   : 0 auto;
 }
 
-button {
-    padding: 10px;
-    margin: 5px;
-    width: 70px;
+.key {
+    width           : 50px;
+    height          : 50px;
+    margin          : 4px;
+    border          : 3px solid rgba(255, 255, 255, 0.548);
+    border-radius   : 50%;
     background-color: #223329;
-    border: none;
-    border-radius: 8px;
+    font-family     : 'Courier New', Courier, monospace;
+    font-weight     : bold;
+    box-shadow      : 0px 4px 8px #15201a;
+    text-shadow     : 0px 4px 8px rgb(145, 145, 145);
+}
+
+.key:hover {
+    box-shadow : 0px 5px 9px #0b110e;
+    text-shadow: 0px 4px 8px rgb(63, 63, 63);
+    color      : rgb(235, 235, 235);
+}
+
+.key:active {
+    box-shadow: 0px 4px 4px #15201a;
+    transform : scale(0.97);
 }

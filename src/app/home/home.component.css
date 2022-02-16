@@ -1,29 +1,5 @@
-.menu_principal {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-top: 50px;
-}
-
-.menu_botones {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 50px;
-    gap: 10px;
-}
-
 img {
-    padding: 20px;
+    padding   : 20px;
     min-height: 10vh;
     max-height: 35vh;
-}
-
-button {
-    width: 70%;
-    padding: 10px;
-    background-color: #0000000c;
-    border: none;
-    border-radius: 12px;
-    align-self: center;
 }
