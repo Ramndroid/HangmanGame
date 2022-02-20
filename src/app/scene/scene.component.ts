@@ -52,7 +52,8 @@ export class SceneComponent implements OnInit {
   private getSecretWord() {
     let random = Math.floor(Math.random() * (words[this.sceneDifficulty].length));
     let sceneSecretWord = words[this.sceneDifficulty][random].toUpperCase();
-    this.getSecretWordInArray(sceneSecretWord);
+    let result = sceneSecretWord.replace("Á","A").replace("É","E").replace("Í","I").replace("Ó","O").replace("Ú","U");
+    this.getSecretWordInArray(result);
   }
 
   private getSecretWordInArray(secretWord: string) {
