@@ -21,7 +21,7 @@ export class SceneComponent implements OnInit {
 
   sceneShowSecretWord: boolean = false; 
 
-  sceneTextButton: string = "Abandonar partida"; 
+  sceneTextButton: string = "ABANDONAR PARTIDA"; 
 
   private sceneSuccessfulLetters: string[] = [];
 
@@ -51,9 +51,8 @@ export class SceneComponent implements OnInit {
 
   private getSecretWord() {
     let random = Math.floor(Math.random() * (words[this.sceneDifficulty].length));
-    let sceneSecretWord = words[this.sceneDifficulty][random].toUpperCase();
-    let result = sceneSecretWord.replace("Á","A").replace("É","E").replace("Í","I").replace("Ó","O").replace("Ú","U");
-    this.getSecretWordInArray(result);
+    let sceneSecretWord = words[this.sceneDifficulty][random];
+    this.getSecretWordInArray(sceneSecretWord);
   }
 
   private getSecretWordInArray(secretWord: string) {
@@ -83,7 +82,12 @@ export class SceneComponent implements OnInit {
   }
 
   private isLetterInSecretWord(letter: string): boolean {
-    return this.sceneSecretWordArray.includes(letter);
+    let letterArray: string[]= [];
+    this.sceneSecretWordArray.forEach(letter => {
+      let replaceLetter = letter.replace("á","a").replace("é","e").replace("í","i").replace("ó","o").replace("ú","u");
+      letterArray.push(replaceLetter);
+    });
+    return letterArray.includes(letter);
   }
 
   private secretWordHasLetter(letter: string) {
@@ -93,7 +97,9 @@ export class SceneComponent implements OnInit {
     let result: string = "";
 
     this.sceneSecretWordArray.forEach(letter => {
-      if (this.sceneSuccessfulLetters.includes(letter))
+      let replaceLetter = letter.replace("á","a").replace("é","e").replace("í","i").replace("ó","o").replace("ú","u");
+
+      if (this.sceneSuccessfulLetters.includes(replaceLetter))
         result += letter;
       else
         result += this.SEPARATOR;
@@ -104,14 +110,14 @@ export class SceneComponent implements OnInit {
 
   private hasWon() {
     if (!this.sceneWordDisplayedNowArray.includes(this.SEPARATOR)) {
-      this.sceneTextButton = "Nueva partida";
+      this.sceneTextButton = "NUEVA PARTIDA";
       this.sceneCurrentState = 1;
     }
   }
 
   private hasLost() {
     if (this.sceneAttempts == 0) {
-      this.sceneTextButton = "Volver a intentar";
+      this.sceneTextButton = "VOLVER A INTENTAR";
       this.sceneShowSecretWord = true;
       this.sceneCurrentState = 2;
     }

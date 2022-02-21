@@ -1,17 +1,17 @@
 @font-face {
-    font-family: "chalk";
-    src        : url("assets/fonts/chalk.otf");
+    font-family: crayon;
+    src        : url('assets/fonts/ChalkPerio.otf') format('woff');
 }
 
+
 * {
-    margin        : 0px;
-    padding       : 0px;
-    box-sizing    : border-box;
-    font-family   : "chalk";
-    font-weight   : lighter;
-    text-transform: uppercase;
-    text-align    : center;
-    color         : whitesmoke;
+    margin           : 0px;
+    padding          : 0px;
+    box-sizing       : border-box;
+    font-family      : "crayon";
+    font-weight      : lighter;
+    text-align       : center;
+    color            : whitesmoke;
 }
 
 body {
@@ -54,6 +54,7 @@ body {
 }
 
 .btn:hover {
+    content : "_";
     background-size: 100% 8px;
     opacity        : 1;
     transform      : scale(1.05);
